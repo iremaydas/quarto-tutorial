@@ -1,0 +1,19 @@
+---
+title: "Hello Quarto + Cloudflare"
+---
+
+This page calls **/api**. 
+
+```{=html}
+<button id="ping">Call API</button>
+<pre id="out"></pre>
+<script>
+document.getElementById('ping').addEventListener('click', async () => {
+  const r = await fetch('/api', { method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ name: 'İrem' })
+  });
+  const data = await r.json();
+  document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+});
+</script>
